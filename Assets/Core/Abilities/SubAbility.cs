@@ -1,22 +1,23 @@
-using System.Threading.Tasks;
-
 public class SubAbility : Ability {
-  public AbilityMethodReference Action;
-  public AbilityMethodReference Release;
+  public AbilityEventReference Event;
 
   Ability Ability;
-  AbilityMethod ActionMethod;
-  AbilityMethod ReleaseMethod;
+  IEventSource AbilityEvent;
 
-  //public override AbilityTag ActiveTags => Tags | Ability.ActiveTags;
+  public override AbilityTag ActiveTags => Tags | Ability.ActiveTags;
 
-  //public override bool CanStart(AbilityMethod func) => Ability.CanStart(func == MainAction ? ActionMethod : ReleaseMethod);
-  //public override Task MainAction(TaskScope scope) => ActionMethod != null ? Ability.Run(scope, ActionMethod) : null;
-  //public override Task MainRelease(TaskScope scope) => ReleaseMethod != null ? Ability.Run(scope, ReleaseMethod) : null;
+  // TODO arg
+  public override bool CanRun() => Ability.CanRun();
 
-  //void Start() {
-  //  Ability = Action.Ability;
-  //  ActionMethod = Action.GetMethod();
-  //  ReleaseMethod = Release.GetMethod();
-  //}
+  protected override void Awake() {
+    base.Awake();
+    Ability = Event.Ability;
+    AbilityEvent = Event.GetEvent();
+    if (AbilityEvent != null)
+      AbilityEvent.Listen(() => RunEvent.Fire());
+  }
+  protected override void OnDestroy() {
+    base.OnDestroy();
+    AbilityEvent.Clear();
+  }
 }

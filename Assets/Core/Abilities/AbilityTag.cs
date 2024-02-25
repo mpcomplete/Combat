@@ -28,9 +28,4 @@ public enum AbilityTag {
   OnWall = 1 << 16,
 
   Interact = 1 << 20,             // If the player has this tag, he can only use abilities with this tag
-
-  AbilityHeavyEnabled = 1 << 28,
-  AbilitySlamEnabled = 1 << 29,
-  AbilityMorphEnabled = 1 << 30,
-  AbilitySuplexEnabled = 1 << 31,
 }
