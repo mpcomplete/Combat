@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 
+// An editor reference to an EventSource on an Ability. Used by SubAbility to point to events other than Ability.RunEvent.
 [Serializable]
 public class AbilityEventReference {
   public Ability Ability;

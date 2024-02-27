@@ -1,3 +1,4 @@
+// Forwards its RunEvent activation to another Ability, to allow composite actions to be handled by one class (the one we forward to).
 public class SubAbility : Ability {
   public AbilityEventReference Event;
 
@@ -6,7 +7,6 @@ public class SubAbility : Ability {
 
   public override AbilityTag ActiveTags => Tags | Ability.ActiveTags;
 
-  // TODO arg
   public override bool CanRun() => Ability.CanRun();
 
   protected override void Awake() {

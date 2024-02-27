@@ -1,6 +1,7 @@
-using System;
 using System.Threading.Tasks;
 
+// Convenience machinery which binds an Ability's RunEvent to an async Run method. Is considered
+// "Running" as long as its TaskRunner has any running tasks.
 public abstract class TaskAbility : Ability {
   public override bool IsRunning => RunningTaskCount > 0;
   public override void Stop() {
@@ -10,6 +11,8 @@ public abstract class TaskAbility : Ability {
   // Main entry-point that runs while ability is running.
   public abstract Task Run(TaskScope scope);
 
+  // TODO: Perhaps this could be simplified. We could just be "Running" until Run/Runner returns. I'm not sure
+  // there will be any alternate consumers of Runner/Run.
   int RunningTaskCount = 0;
   protected TaskRunner TaskRunner = new();
 

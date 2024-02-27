@@ -6,21 +6,21 @@ using UnityEngine.InputSystem;
 public enum InputActionType {
   JustDown,
   JustUp,
-  Always,
+  Always,  // Triggers every frame, most useful with a parameter (e.g. Move with the Vector2 axis value).
 }
 
 [Serializable]
-public struct InputToAbilityMap {
+public struct InputToAbilityMapping {
   public InputActionReference Action;
   public InputActionType Type;
   public Ability Ability;
 }
 
+// Maps InputActions to Abilities.
 [DefaultExecutionOrder(-1)]
 public class InputMappings : MonoBehaviour {
   [SerializeField] AbilityManager AbilityManager;
-  //[SerializeField] Ability Move;
-  [SerializeField] List<InputToAbilityMap> Mappings;
+  [SerializeField] List<InputToAbilityMapping> Mappings;
 
   Inputs Inputs;
 

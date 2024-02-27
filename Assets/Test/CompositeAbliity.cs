@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
+// Test ability with multiple entry/exit points. SubAbility helps bind to these events.
 public class CompositeAbility : TaskAbility {
   public EventSource ReleaseEvent = new();
   public EventSource AltEvent = new();
