@@ -8,7 +8,7 @@ public class AbilityEventReference {
 
   public IEventSource GetEvent() {
     if (!Ability || EventName.Length == 0) return null;
-    var propertyInfo = Ability.GetType().GetProperty(EventName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-    return (IEventSource)propertyInfo.GetValue(Ability);
+    var fieldInfo = Ability.GetType().GetField(EventName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+    return (IEventSource)fieldInfo.GetValue(Ability);
   }
 }

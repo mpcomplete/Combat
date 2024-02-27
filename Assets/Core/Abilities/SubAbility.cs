@@ -13,11 +13,10 @@ public class SubAbility : Ability {
     base.Awake();
     Ability = Event.Ability;
     AbilityEvent = Event.GetEvent();
-    if (AbilityEvent != null)
-      AbilityEvent.Listen(() => RunEvent.Fire());
+    RunEvent.Listen(() => AbilityEvent.Fire());
   }
   protected override void OnDestroy() {
     base.OnDestroy();
-    AbilityEvent.Clear();
+    RunEvent.Clear();
   }
 }

@@ -6,7 +6,7 @@ public delegate Task AbilityMethod(TaskScope scope);
 [DefaultExecutionOrder(ScriptExecutionGroups.Ability)]
 public abstract class Ability : MonoBehaviour {
   // Main entry point. Use SubAbility to bind an ability to an event source other than Main.
-  public EventSource RunEvent;
+  public EventSource RunEvent = new();
   public AbilityTag TagsWhenActive;
 
   public virtual AbilityTag ActiveTags => Tags;

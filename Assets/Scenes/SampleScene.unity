@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 637973729}
   - component: {fileID: 637973730}
   m_Layer: 0
-  m_Name: Switch
+  m_Name: Alt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -504,7 +504,7 @@ MonoBehaviour:
   TagsWhenActive: 0
   Event:
     Ability: {fileID: 354492997}
-    EventName: SwitchEvent
+    EventName: AltEvent
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1465513597}
   - component: {fileID: 1465513596}
+  - component: {fileID: 1465513598}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -647,6 +648,22 @@ Transform:
   - {fileID: 124362954}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1465513598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465513595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828e636d99d66da42add1403be917268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityManager: {fileID: 1465513596}
+  TestAction: {fileID: 354492997}
+  TestAlt: {fileID: 637973730}
+  TestRelease: {fileID: 1216447486}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
