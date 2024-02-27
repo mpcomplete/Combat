@@ -661,9 +661,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AbilityManager: {fileID: 1465513596}
-  TestAction: {fileID: 354492997}
-  TestAlt: {fileID: 637973730}
-  TestRelease: {fileID: 1216447486}
+  Mappings:
+  - Action: {fileID: -2439711996852377159, guid: cba86345bf2f80648920b808607811b8,
+      type: 3}
+    Type: 0
+    Ability: {fileID: 354492997}
+  - Action: {fileID: -2439711996852377159, guid: cba86345bf2f80648920b808607811b8,
+      type: 3}
+    Type: 1
+    Ability: {fileID: 1216447486}
+  - Action: {fileID: 2578279335818416804, guid: cba86345bf2f80648920b808607811b8,
+      type: 3}
+    Type: 0
+    Ability: {fileID: 637973730}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
