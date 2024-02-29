@@ -16,6 +16,10 @@ public class AbilityManager : MonoBehaviour {
     Abilities.Remove(ability);
   }
 
+  public bool CanRun(Ability ability) {
+    return ability.CanRun(ability.RunEvent);
+  }
+
   public bool TryRun(Ability ability) {
     if (CanRun(ability)) {
       Run(ability);
@@ -24,12 +28,22 @@ public class AbilityManager : MonoBehaviour {
     return false;
   }
 
-  public bool CanRun(Ability ability) {
-    return ability.CanRun(ability.RunEvent);
+  public bool TryRun<T>(Ability ability, T parameter) {
+    if (CanRun(ability)) {
+      Run(ability, parameter);
+      return true;
+    }
+    return false;
   }
 
   public void Run(Ability ability) {
+    CancelAbilities(); // TODO: only do if needed
+    ability.RunEvent.Fire();
+  }
+
+  public void Run<T>(Ability ability, T parameter) {
     CancelAbilities();
+    ((IAbilityWithParameter<T>)ability).Parameter = parameter;
     ability.RunEvent.Fire();
   }
 
@@ -38,7 +52,7 @@ public class AbilityManager : MonoBehaviour {
       ability.Stop();
   }
 
-  public TaskFunc RunUntilDone(Ability ability) => async (s) => {
+  public TaskFunc RunUntilDone(Ability ability) => async s => {
     Run(ability);
     await s.Until(() => !ability.IsRunning);
   };

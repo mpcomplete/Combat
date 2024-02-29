@@ -20,6 +20,7 @@ public struct InputToAbilityMapping {
 [DefaultExecutionOrder(-1)]
 public class InputMappings : MonoBehaviour {
   [SerializeField] AbilityManager AbilityManager;
+  [SerializeField] InputToAbilityMapping Move;
   [SerializeField] List<InputToAbilityMapping> Mappings;
 
   Inputs Inputs;
@@ -27,6 +28,7 @@ public class InputMappings : MonoBehaviour {
   void Awake() {
     Inputs = new();
     Inputs.Enable();
+    Move.Action.asset.Enable();
     Mappings.ForEach(m => m.Action.asset.Enable());
   }
 
@@ -36,21 +38,15 @@ public class InputMappings : MonoBehaviour {
   }
 
   void FixedUpdate() {
-    //var move = Inputs.Player.Move.ReadValue<Vector2>();
-    //if (AbilityManager.CanRun(Move)) {
-    //  // TODO: move val
-    //  AbilityManager.Run(Move);
-    //}
+    AbilityManager.TryRun(Move.Ability, Move.Action.action.ReadValue<Vector2>());
 
     // TODO: This is just a skeleton. Features to add/consider:
     // - buffering
-    // - parameters (for axis mappings, action.ReadValue<Vector2> piped to Ability in a generic way)
     Mappings.ForEach(m => {
       m.Action.asset.Enable();
       switch (m.Type) {
       case InputActionType.JustDown: if (m.Action.action.WasPerformedThisFrame()) AbilityManager.TryRun(m.Ability); break;
       case InputActionType.JustUp: if (m.Action.action.WasReleasedThisFrame()) AbilityManager.TryRun(m.Ability); break;
-      case InputActionType.Always: AbilityManager.TryRun(m.Ability); break;
       }
     });
   }

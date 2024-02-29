@@ -1,5 +1,10 @@
 using UnityEngine;
 
+  // Optional parameter for abilities, ex: a movement ability with a Vector2 axis value.
+public interface IAbilityWithParameter<T> {
+  public T Parameter { get; set; }
+}
+
 // Base class for Abilities. Managed and run via AbilityManager, bound to inputs via InputMappings.
 // The Ability is activated via its RunEvent, which should be bound to a callback.
 // Subclasses exist with extra machinery for common cases.
