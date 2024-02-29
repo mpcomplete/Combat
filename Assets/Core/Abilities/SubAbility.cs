@@ -7,7 +7,7 @@ public class SubAbility : Ability {
 
   public override AbilityTag ActiveTags => Tags | Ability.ActiveTags;
 
-  public override bool CanRun() => Ability.CanRun();
+  public override bool CanRun(IEventSource _) => Ability.CanRun(AbilityEvent);
 
   protected override void Awake() {
     base.Awake();

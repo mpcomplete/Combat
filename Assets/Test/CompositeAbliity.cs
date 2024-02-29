@@ -6,6 +6,13 @@ public class CompositeAbility : TaskAbility {
   public EventSource ReleaseEvent = new();
   public EventSource AltEvent = new();
 
+  public override bool CanRun(IEventSource entry) => 0 switch {
+    _ when entry == RunEvent => !IsRunning,
+    _ when entry == ReleaseEvent => IsRunning,
+    _ when entry == AltEvent => IsRunning,
+    _ => false,
+  };
+
   public override async Task Run(TaskScope scope) {
     Debug.Log($"Pressed");
     await scope.Any(

@@ -16,7 +16,7 @@ public abstract class Ability : MonoBehaviour {
 
   public virtual AbilityTag ActiveTags => Tags;
   public virtual bool IsRunning => false;
-  public virtual bool CanRun() => true;
+  public virtual bool CanRun(IEventSource entry) => true;
   public virtual void Stop() { Tags = default;  }
 
   protected AbilityManager AbilityManager;

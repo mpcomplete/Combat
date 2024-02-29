@@ -25,7 +25,7 @@ public class AbilityManager : MonoBehaviour {
   }
 
   public bool CanRun(Ability ability) {
-    return ability.CanRun();
+    return ability.CanRun(ability.RunEvent);
   }
 
   public void Run(Ability ability) {
