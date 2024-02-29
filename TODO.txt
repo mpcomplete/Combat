@@ -1,0 +1,18 @@
+Extracting core library stuff for combat style games.
+
+AbilityManager tag system that helps decide when abilities can start, eg
+- HeavySwordSwing cannot start while Stab is running (OnlyOne)
+- Jump cancels Dash, but cannot start while Stabbing
+- while Dashing, new abilities are available
+
+Status system
+
+Combatant, Hitbox, Hurtbox
+- Hitbox and Hurtbox priorities for shielded/weak zones, or tip-smash-like power hits
+- System that accumulates hits for a frame, and decides how to merge/dispatch them at end of frame
+
+Input buffering
+
+Timeline and TimelineAbilities
+- experiment with timeline system for arranging frame-perfect durations for triggers, sfx, vfx, animations
+- time scaling of full or partial regions (e.g. slow windup but fast release, charging and holding, etc)
