@@ -7,6 +7,7 @@ using UnityEngine;
 public class AbilityManager : MonoBehaviour {
   [HideInInspector, NonSerialized] public List<Ability> Abilities = new();
 
+  public IEnumerable<Ability> Running => Abilities.Where(a => a.IsRunning);
   IEnumerable<Ability> Cancellable => Abilities.Where(a => a.IsRunning && a.ActiveTags.HasAllFlags(AbilityTag.Cancellable | AbilityTag.OnlyOne));
   public void CancelAbilities() => Cancellable.ForEach(a => a.Stop());
 
@@ -17,7 +18,9 @@ public class AbilityManager : MonoBehaviour {
   }
 
   public bool CanRun(Ability ability) {
-    return ability.CanRun(ability.RunEvent);
+    bool CanCancel(Ability other) => ability.TagsWhenActive.HasAllFlags(AbilityTag.CancelOthers) && other.ActiveTags.HasAllFlags(AbilityTag.Cancellable);
+    var onlyOne = ability.TagsWhenActive.HasAllFlags(AbilityTag.OnlyOne) && Running.Any(a => a.ActiveTags.HasAllFlags(AbilityTag.OnlyOne) && !CanCancel(a));
+    return !onlyOne && ability.CanRun(ability.RunEvent);
   }
 
   public bool TryRun(Ability ability) {

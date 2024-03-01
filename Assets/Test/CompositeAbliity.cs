@@ -14,13 +14,13 @@ public class CompositeAbility : TaskAbility {
   };
 
   public override async Task Run(TaskScope scope) {
-    Debug.Log($"Pressed");
+    Debug.Log($"Pressed {name}");
     await scope.Any(
       Waiter.ListenFor(ReleaseEvent),
       Waiter.Repeat(async s => {
         await s.ListenFor(AltEvent);
-        Debug.Log($"Alt");
+        Debug.Log($"Alt {name}");
       }));
-    Debug.Log($"Released");
+    Debug.Log($"Released {name}");
   }
 }

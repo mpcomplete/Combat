@@ -11,8 +11,6 @@ Combatant, Hitbox, Hurtbox
 - Hitbox and Hurtbox priorities for shielded/weak zones, or tip-smash-like power hits
 - System that accumulates hits for a frame, and decides how to merge/dispatch them at end of frame
 
-Input buffering
-
 Timeline and TimelineAbilities
 - experiment with timeline system for arranging frame-perfect durations for triggers, sfx, vfx, animations
 - time scaling of full or partial regions (e.g. slow windup but fast release, charging and holding, etc)
