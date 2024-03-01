@@ -22,7 +22,7 @@ public abstract class TaskAbility : Ability {
   protected TaskFunc Runner(TaskFunc f) => async scope => {
     try {
       RunningTaskCount++;
-      Tags.AddFlags(TagsWhenActive);
+      Tags.AddFlags(StartingTags);
       if (f(scope) is var task && task != null)
         await task;
     } finally {

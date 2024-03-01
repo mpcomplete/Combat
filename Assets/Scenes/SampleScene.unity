@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a9091039efaa849859e49df00c7f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagsWhenActive: 1
+  StartingTags: 1
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a9091039efaa849859e49df00c7f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagsWhenActive: 1
+  StartingTags: 1
 --- !u!1 &637973728
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dcf60bab9fbacc4da3a7b145b66609f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagsWhenActive: 0
+  StartingTags: 0
   Event:
     Ability: {fileID: 354492997}
     EventName: AltEvent
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb62c144f7258a7438ca118a4d3b4c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagsWhenActive: 0
+  StartingTags: 64
 --- !u!1 &1216447484
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dcf60bab9fbacc4da3a7b145b66609f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagsWhenActive: 0
+  StartingTags: 0
   Event:
     Ability: {fileID: 354492997}
     EventName: ReleaseEvent
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dcf60bab9fbacc4da3a7b145b66609f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagsWhenActive: 0
+  StartingTags: 0
   Event:
     Ability: {fileID: 497056689}
     EventName: ReleaseEvent
@@ -802,6 +802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828e636d99d66da42add1403be917268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BufferDuration:
+    Millis: 100
   AbilityManager: {fileID: 1465513596}
   Move:
     Action: {fileID: 269974575475353438, guid: cba86345bf2f80648920b808607811b8, type: 3}
@@ -828,8 +830,6 @@ MonoBehaviour:
       type: 3}
     Type: 1
     Ability: {fileID: 1327647299}
-  BufferDuration:
-    Millis: 100
 --- !u!1 &1656211443
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dcf60bab9fbacc4da3a7b145b66609f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagsWhenActive: 0
+  StartingTags: 0
   Event:
     Ability: {fileID: 497056689}
     EventName: AltEvent

@@ -18,9 +18,21 @@ public class AbilityManager : MonoBehaviour {
   }
 
   public bool CanRun(Ability ability) {
-    bool CanCancel(Ability other) => ability.TagsWhenActive.HasAllFlags(AbilityTag.CancelOthers) && other.ActiveTags.HasAllFlags(AbilityTag.Cancellable);
-    var onlyOne = ability.TagsWhenActive.HasAllFlags(AbilityTag.OnlyOne) && Running.Any(a => a.ActiveTags.HasAllFlags(AbilityTag.OnlyOne) && !CanCancel(a));
-    return !onlyOne && ability.CanRun(ability.RunEvent);
+    bool CanCancel(Ability other) => ability.StartingTags.HasAllFlags(AbilityTag.CancelOthers) && other.ActiveTags.HasAllFlags(AbilityTag.Cancellable);
+
+    var failReason = 0 switch {
+      _ when !ability.CanRun(ability.RunEvent) => 1,
+      //_ when !Status.CanAttack => 2,
+      _ when ability.StartingTags.HasAllFlags(AbilityTag.OnlyOne) && Running.Any(a => a.ActiveTags.HasAllFlags(AbilityTag.OnlyOne) && !CanCancel(a)) => 4,
+      _ when ability.StartingTags.HasAllFlags(AbilityTag.BlockIfRunning) && ability.IsRunning => 5,
+      _ when ability.StartingTags.HasAllFlags(AbilityTag.BlockIfNotRunning) && !ability.IsRunning => 6,
+      //_ when ability.TagsWhenActive.HasAllFlags(AbilityTag.Grounded) && !Status.IsGrounded => 7,
+      //_ when ability.TagsWhenActive.HasAllFlags(AbilityTag.Airborne) && Status.IsGrounded => 8,
+      _ => 0,
+    };
+    //if (failReason > 0)
+    //  Debug.Log($"Trying to start {ability}.{method.Method.Name} but cant because {failReason}");
+    return failReason == 0;
   }
 
   public bool TryRun(Ability ability) {
