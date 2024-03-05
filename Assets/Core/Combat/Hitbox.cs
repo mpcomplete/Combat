@@ -1,14 +1,4 @@
-using System;
 using UnityEngine;
-
-[Serializable]
-public struct HitConfig2 {
-  public enum Types { Sword, Hammer, OtherThingy };
-  public Types HitType;
-  public int Damage;
-  public float RecoilStrength;
-  public float KnockbackStrength;
-}
 
 public class HitEvent {
   public HitConfig HitConfig;
@@ -51,22 +41,22 @@ public class HitEvent {
 
 public class Hitbox : MonoBehaviour {
   public Combatant Owner;
-  public HitConfig HitConfig;
+  public AttributeValue Damage;
+  [Tooltip("Only highest priority hitbox will register per attack")] public int Priority = 1;
   Collider Collider;
 
-  public bool EnableCollision {
+  public bool CollisionEnabled {
     get => Collider.enabled;
     set => Collider.enabled = value;
   }
 
   void Awake() {
-    Collider = GetComponent<Collider>();
+    this.InitComponent(out Collider);
     Owner = Owner ?? GetComponentInParent<Combatant>();
   }
 
   void OnTriggerEnter(Collider c) {
-    if (c.TryGetComponent(out Hurtbox hurtee)) {
-      //hurtee.ProcessHit(Owner, HitConfig);
-    }
+    if (c.TryGetComponent(out Hurtbox hurtee))
+      HitManager.Instance.OnHit(this, hurtee);
   }
 }
