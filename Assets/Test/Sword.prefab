@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 6859443538710752154}
   - component: {fileID: 4585244892407561899}
   - component: {fileID: 3950609886630227074}
+  - component: {fileID: 5444440033730224447}
   m_Layer: 0
   m_Name: Hitbox main
   m_TagString: Untagged
@@ -61,8 +62,8 @@ Transform:
   m_GameObject: {fileID: 1473324378314665959}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.95}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6817650742890525014}
@@ -88,16 +89,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Owner: {fileID: 0}
-  HitConfig:
-    KnockbackAngle: 0
-    RecoilStrength: 0
-    CameraShakeStrength: 0
-    HitStopDuration:
-      Millis: 1
-    StunDuration:
-      Millis: 500
-    SlowFallDuration:
-      Millis: 0
+  Damage:
+    Flat: 0
+    AddFactor: 1
+    MultFactor: 1
+  Priority: 1
+--- !u!65 &5444440033730224447
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473324378314665959}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5633518603249348338
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +209,7 @@ GameObject:
   - component: {fileID: 6437520592900136879}
   - component: {fileID: 8909557260443060258}
   - component: {fileID: 2035475108526412468}
+  - component: {fileID: 9127664014619134125}
   m_Layer: 0
   m_Name: Hitbox tip
   m_TagString: Untagged
@@ -208,8 +226,8 @@ Transform:
   m_GameObject: {fileID: 7995968038235271843}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.45}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6817650742890525014}
@@ -235,13 +253,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Owner: {fileID: 0}
-  HitConfig:
-    KnockbackAngle: 0
-    RecoilStrength: 0
-    CameraShakeStrength: 0
-    HitStopDuration:
-      Millis: 1
-    StunDuration:
-      Millis: 500
-    SlowFallDuration:
-      Millis: 0
+  Damage:
+    Flat: 0
+    AddFactor: 1
+    MultFactor: 1
+  Priority: 1
+--- !u!65 &9127664014619134125
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7995968038235271843}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

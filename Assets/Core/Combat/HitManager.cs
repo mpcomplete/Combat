@@ -3,7 +3,7 @@ using UnityEngine;
 
 // TODO: More sophisticated. Ignore dupe hits on subsequent frames.
 public class HitManager : SingletonBehavior<HitManager> {
-  List<(Hitbox, Hurtbox)> Hits;
+  List<(Hitbox, Hurtbox)> Hits = new();
 
   public void OnHit(Hitbox attacker, Hurtbox victim) {
     if (Hits.Find(h => h.Item1 == attacker && h.Item2 == victim) is var h && h.Item1) {

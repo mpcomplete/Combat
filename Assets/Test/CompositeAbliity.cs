@@ -15,6 +15,8 @@ public class CompositeAbility : TaskAbility {
 
   public override async Task Run(TaskScope scope) {
     Debug.Log($"Pressed {name}");
+    var anim = AbilityManager.GetComponent<Animator>();
+    anim.SetTrigger("SwingSword");
     await scope.Any(
       Waiter.ListenFor(ReleaseEvent),
       Waiter.Repeat(async s => {
